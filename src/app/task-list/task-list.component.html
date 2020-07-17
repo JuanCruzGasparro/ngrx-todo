@@ -1,0 +1,33 @@
+<h2 class="my-3">Today</h2>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let task of todoTasks$ | async">
+    <div class="form-check">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        [checked]="task.isChecked"
+        (click)="toggleDone(task.id)"
+      />
+      <label class="form-check-label ml-4" for="task">{{ task.text }}</label>
+    </div>
+  </li>
+</ul>
+
+<h2 class="my-3">Done</h2>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let task of doneTasks$ | async">
+    <div class="form-check">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        [checked]="task.isChecked"
+        (click)="toggleDone(task.id)"
+      />
+      <label
+        class="form-check-label ml-4 text-decoration-line-through"
+        for="task"
+        >{{ task.text }}</label
+      >
+    </div>
+  </li>
+</ul>
